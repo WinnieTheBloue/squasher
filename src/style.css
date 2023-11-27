@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -43,8 +43,19 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #fff;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+input {
+  background-color: #242424;
+  border: solid 1px #fff9;
+  border-radius: 1rem;
+  color: #fff;
+}
+input:focus {
+  outline: none;
+  border: solid 1px #fff;
 }
 button:hover {
   border-color: #646cff;
@@ -65,15 +76,4 @@ button:focus-visible {
   text-align: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+
