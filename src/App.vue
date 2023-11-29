@@ -15,27 +15,6 @@ export default {
       server: -1,
       position: -1,
       lastPlayer: -1,
-
-      savedData: [
-        data=  {
-          set: 0,
-          point: 0,
-          server: -1,
-          position: -1,
-          lastPlayer: -1,
-          sets: [],
-        },
-        data=  {
-          set: 1,
-          point: 0,
-          server: -1,
-          position: -1,
-          lastPlayer: -1,
-          sets: [],
-        },
-
-      ],
-
       match: {
         player1: {
           name: "Player 1",
@@ -145,18 +124,14 @@ export default {
           this.position = -1;
           if (this.match.player1.sets == 3 || this.match.player2.sets == 3) {
             this.matchEnded = true;
-            console.log(this.match);
           }
         }
       }
     },
     startNewGame() {
       window.location.reload();
-    },
+    },    
   },
-  created() {
-    console.log(this.savedData)
-  }
 };
 </script>
 
@@ -249,8 +224,12 @@ export default {
   <div class="serverPopup" v-if="server == -1 && gameStarted">
     <div class="serverPopupContent">
       <h1>Who is serving?</h1>
-      <button @click="server = lastPlayer = 0">{{ match.player1.name }}</button>
-      <button @click="server = lastPlayer = 1">{{ match.player2.name }}</button>
+      <button @click="server = lastPlayer = 0">
+        {{ match.player1.name }}
+      </button>
+      <button @click="server = lastPlayer = 1">
+        {{ match.player2.name }}
+      </button>
     </div>
   </div>
   <div class="sidePopup" v-if="position == -1 && server != -1 && gameStarted">
@@ -261,7 +240,10 @@ export default {
       <button @click="position = 0">Right</button>
     </div>
   </div>
-  <div v-if="gameStarted">
+  <div class="game" v-if="gameStarted">
+    <button class="back" @click="undo">
+      <span class="material-symbols-rounded"> undo </span>
+    </button>
     <h1>{{ match.player1.name }} vs {{ match.player2.name }}</h1>
     <h2>Set {{ set + 1 }}</h2>
 
@@ -354,6 +336,15 @@ button.selected {
   align-items: center;
   border-radius: 10rem;
   background-color: transparent;
+}
+.game .back {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 10rem;
+  /* background-color: #ebebeb4e; */
 }
 .colors {
   width: 100%;
