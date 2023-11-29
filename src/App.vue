@@ -16,6 +16,26 @@ export default {
       position: -1,
       lastPlayer: -1,
 
+      savedData: [
+        data=  {
+          set: 0,
+          point: 0,
+          server: -1,
+          position: -1,
+          lastPlayer: -1,
+          sets: [],
+        },
+        data=  {
+          set: 1,
+          point: 0,
+          server: -1,
+          position: -1,
+          lastPlayer: -1,
+          sets: [],
+        },
+
+      ],
+
       match: {
         player1: {
           name: "Player 1",
@@ -134,6 +154,9 @@ export default {
       window.location.reload();
     },
   },
+  created() {
+    console.log(this.savedData)
+  }
 };
 </script>
 
